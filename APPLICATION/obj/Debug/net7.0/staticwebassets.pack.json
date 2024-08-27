@@ -1,0 +1,53 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Fatima\\Desktop\\Projects\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\APPLICATION.bundle.scp.css",
+      "PackagePath": "staticwebassets\\APPLICATION.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Fatima\\Desktop\\Projects\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Fatima\\Desktop\\Projects\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Fatima\\Desktop\\Projects\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\Fatima\\Desktop\\Projects\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Fatima\\Desktop\\Projects\\wwwroot\\images\\login.jpg",
+      "PackagePath": "staticwebassets\\images\\login.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Fatima\\Desktop\\Projects\\wwwroot\\images\\logo-login.png",
+      "PackagePath": "staticwebassets\\images\\logo-login.png"
+    },
+    {
+      "Id": "C:\\Users\\Fatima\\Desktop\\Projects\\wwwroot\\images\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logo.png"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.APPLICATION.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.APPLICATION.props",
+      "PackagePath": "build\\APPLICATION.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.APPLICATION.props",
+      "PackagePath": "buildMultiTargeting\\APPLICATION.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.APPLICATION.props",
+      "PackagePath": "buildTransitive\\APPLICATION.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

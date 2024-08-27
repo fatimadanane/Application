@@ -1,0 +1,61 @@
+@page "/add-document"
+@using APPLICATION.Models.ARCHIVE
+@attribute [Authorize]
+@using System.ComponentModel.DataAnnotations
+@using Radzen
+@using Microsoft.AspNetCore.Components.Forms
+@using Radzen.Blazor
+@using Radzen.Blazor.Rendering
+@attribute [Authorize]
+
+<PageTitle>AddDocument</PageTitle>
+<RadzenTemplateForm TItem="TDocument" Data="@addedDocument">
+    <RadzenFieldset Text="Informations du document" Style="font-weight: bold;">
+        <RadzenRow>
+        <RadzenColumn Size="6">
+                <RadzenStack>
+                    <RadzenFormField AllowFloatingLabel="true" Text="Intitulé">
+                        <RadzenTextBox @bind-Value="addedDocument.Intitule" />
+                        <RadzenRequiredValidator Text="Intitulé is required" Component="Intitule" Style="position:absolute" Popup="true" />
+                    </RadzenFormField>
+                     <RadzenFormField AllowFloatingLabel="true" Text="Date ">
+                        <RadzenDatePicker @bind-Value="addedDocument.date" />                       
+                    </RadzenFormField>
+
+<RadzenFormField AllowFloatingLabel="true" Text="Famille Un">
+    <RadzenDropDown @bind-Value="addedDocument.Famille_Un" Data="@parentFamilies" TextProperty="intitule" ValueProperty="intitule" Change="OnParentFamilySelected">
+        <RadzenRequiredValidator Text="Famille Un is required" Component="Famille_Un" Style="position:absolute" Popup="true" />
+    </RadzenDropDown>
+</RadzenFormField>
+
+<RadzenFormField AllowFloatingLabel="true" Text="Famille Deux">
+    <RadzenDropDown @bind-Value="addedDocument.Famille_Deux" Data="@childFamilies" TextProperty="intitule" ValueProperty="intitule" Change="OnChildFamilySelected">
+        <RadzenRequiredValidator Text="Famille Deux is required" Component="Famille_Deux" Style="position:absolute" Popup="true" />
+    </RadzenDropDown>
+</RadzenFormField>
+
+                </RadzenStack>                             
+            </RadzenColumn>
+            <RadzenColumn Size="6">
+                <RadzenStack Gap="1rem">                
+                   <RadzenFormField AllowFloatingLabel="true" Text="Famille Trois">
+    <RadzenDropDown @bind-Value="addedDocument.Famille_Trois" Data="@subChildren" TextProperty="intitule" ValueProperty="intitule" >
+        <RadzenRequiredValidator Text="Famille Trois is required" Component="Famille_Trois" Style="position:absolute" Popup="true" />
+    </RadzenDropDown>
+</RadzenFormField>
+                    <RadzenFormField AllowFloatingLabel="true" Text="Date d'expiration">
+                        <RadzenDatePicker @bind-Value="addedDocument.Date_Exp" ValueFormat="dd/MM/yyyy" />
+                    </RadzenFormField>
+                    <RadzenFormField AllowFloatingLabel="true" Text="Date d'alerte">
+                        <RadzenDatePicker @bind-Value="addedDocument.Date_Alerte" ValueFormat="dd/MM/yyyy" />                 
+                    </RadzenFormField>
+                </RadzenStack>
+            </RadzenColumn>            
+        </RadzenRow>
+    </RadzenFieldset>              
+    <div style="text-align: right; padding: 40px 16px 16px 16px;">
+        <RadzenButton ButtonStyle="ButtonStyle.Primary" Text="Valider" Click="@SubmitForm" />
+        <RadzenButton ButtonStyle="ButtonStyle.Secondary" Text="Annuler" Click="@(() => DialogService.Close())" Style="margin-left: 8px;" />
+    </div>
+</RadzenTemplateForm>
+

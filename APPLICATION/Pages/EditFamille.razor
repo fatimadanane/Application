@@ -1,0 +1,20 @@
+@page "/edit-famille"
+
+@attribute [Authorize]
+
+<PageTitle>EditFamille</PageTitle>
+<RadzenRow Gap="1rem" AlignItems="Radzen.AlignItems.Center" Style="font-weight: bold;">
+    <RadzenColumn>
+        <div style="margin-bottom: 1rem;">
+            <RadzenLabel Text="Intitule" Component="Intitule" />
+            <RadzenTextBox @bind-Value="editedFamille.intitule" Style="width: 100%; font-size: 16px;" />
+        </div>
+    </RadzenColumn>
+    <RadzenColumn>
+        <div >
+            <RadzenButton ButtonStyle="ButtonStyle.Primary" Text="Modifier" Click="@SubmitForm" />
+            <RadzenButton ButtonStyle="ButtonStyle.Secondary" Text="Annuler" Click="@(() => DialogService.Close())" Style="margin-left: 8px;" />
+        </div>
+    </RadzenColumn>
+</RadzenRow>
+

@@ -1,0 +1,44 @@
+@page "/document"
+
+@attribute [Authorize]
+
+<PageTitle>Document</PageTitle>
+@page "/documents"
+@using Radzen.Blazor
+@attribute [Authorize]
+@using APPLICATION.Models.ARCHIVE
+@using Microsoft.EntityFrameworkCore
+
+<PageTitle>Documents</PageTitle>
+<RadzenRow>
+    <RadzenColumn Size="12">
+        <RadzenText Icon="description"Text="Documents" TextStyle="TextStyle.H3" TextAlign="Radzen.TextAlign.Center" Style="font-family: Luminari; font-style: normal; color: #413cb4; text-transform: capitalize; font-weight: 900" />
+     
+    </RadzenColumn>
+</RadzenRow>
+
+<RadzenDataGrid GridLines="Radzen.DataGridGridLines.Vertical" AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="true" FilterMode="FilterMode.Simple" AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+    Data="@Documents" ColumnWidth="200px" LogicalFilterOperator="LogicalFilterOperator.Or" SelectionMode="DataGridSelectionMode.Single" TItem="TDocument" AllowColumnPicking="false" AllowColumnReorder="true" AllowGrouping="false" AllowVirtualization="true" IsLoading="false" Responsive="true"
+    Style="border-radius: 10px; border: 2px solid #a89ee0; visibility: visible; color: rgba(66, 66, 66, 0.97); font-style: normal; text-align: center; background-color: #e1dcf6; float: none" CellClick="@DataGridCellClick" CellDoubleClick="@DataGridCellDoubleClick">
+    <Columns>
+        <RadzenDataGridColumn TItem="TDocument" Property="id" Title="ID" />   
+            <RadzenDataGridColumn TItem="TDocument" Property="Intitule" Title="Intitule" />
+        <RadzenDataGridColumn TItem="TDocument" Property="date" Title="Date" />
+        <RadzenDataGridColumn TItem="TDocument" Property="Famille_Un" Title="Famille Un" />
+        <RadzenDataGridColumn TItem="TDocument" Property="Famille_Deux" Title="Famille Deux" />
+        <RadzenDataGridColumn TItem="TDocument" Property="Famille_Trois" Title="Famille Trois" />
+        <RadzenDataGridColumn TItem="TDocument" Property="Date_Exp" Title="Date d'Expiration" />
+        <RadzenDataGridColumn TItem="TDocument" Property="Date_Alerte" Title="Date d'Alerte" />
+ 
+        <RadzenDataGridColumn Width="160px" Frozen="true" Filterable="false" FrozenPosition="Radzen.FrozenColumnPosition.Right">
+            <Template Context="document">
+                <RadzenButton ButtonStyle="ButtonStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" Icon="visibility" class="m-1" Click="@(async () => await OpenDocument(document))" />
+                <RadzenButton ButtonStyle="ButtonStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" Icon="delete" class="m-1" Click="@(async () => await ConfirmAndDelete(document))" />
+                <RadzenButton ButtonStyle="ButtonStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" Icon="edit" class="m-1" Click="@(() => EditDocument(document))"/>
+            </Template>
+        </RadzenDataGridColumn>
+    </Columns>
+    <HeaderTemplate>
+        <RadzenButton Icon="add_circle_outline" Text="Ajouter un document" Variant="Radzen.Variant.Filled" Style="color: #1d00ff; text-transform: uppercase; background-color: rgba(87, 67, 210, 0.28); border-radius: 10px" Click="@(async ()=>await OpenAdd())"></RadzenButton>
+    </HeaderTemplate>
+</RadzenDataGrid>

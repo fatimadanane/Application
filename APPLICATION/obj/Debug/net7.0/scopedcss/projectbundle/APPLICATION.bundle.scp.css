@@ -1,0 +1,35 @@
+/* _content/APPLICATION/Pages/Famille.razor.rz.scp.css */
+.rz-background-color-info-lighter[b-8k3dtmem4q] {
+  background-color: #f8f9fa; /* Light gray background */
+}
+
+.rz-color-on-info-lighter[b-8k3dtmem4q] {
+  color: #333; /* Darker text for better contrast */
+}
+
+.rz-text-align-center[b-8k3dtmem4q] {
+  text-align: center; /* Center text within the column */
+}
+
+.rz-p-2[b-8k3dtmem4q] {
+  padding: 1rem; /* Adjust padding as needed */
+}
+
+.new-parent-button[b-8k3dtmem4q] {
+  margin: 5px 0 20px; /* Adjust margins for better spacing */
+}
+
+.add-parent-form[b-8k3dtmem4q] {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #ddd; /* Add a subtle border */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.grandparent-grid[b-8k3dtmem4q] {
+  /* Customize grid styles here, e.g., font size, borders */
+}
+
+.selected-grandparent[b-8k3dtmem4q] {
+  background-color: #eaeaea; /* Maintain selected row style */
+}

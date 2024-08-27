@@ -1,0 +1,116 @@
+@page "/famille"
+@using APPLICATION.Models.ARCHIVE
+@attribute [Authorize]
+
+@using Microsoft.EntityFrameworkCore
+<style>
+
+</style>
+<PageTitle>Familles</PageTitle>
+<RadzenRow>
+    <RadzenColumn Size="12">
+        <RadzenText Text="Familles" TextStyle="TextStyle.H3" TextAlign="Radzen.TextAlign.Center" Style="font-family: Luminari; font-style: normal; font-weight: 900; color: #413cb4" />
+    </RadzenColumn>
+</RadzenRow></br>
+<RadzenRow JustifyContent="JustifyContent.Normal" AlignItems="AlignItems.Normal" Gap="1rem" class="rz-border-on-info">
+    <RadzenColumn Size="4" class="rz-color-on-info-lighter rz-text-align-center rz-p-2" Style="background-color: rgba(224, 221, 241, 0.3); color: rgba(36, 31, 243, 0.38)">
+        <div>
+            <RadzenButton Icon="add" Text="Famille" Click="@(() => ToggleAddParentForm())" Style="margin: 5px; margin-top: 0px; margin-bottom: 20px"></RadzenButton>
+        </div>
+        @if (showAddParentForm){
+            <div style="margin-top: 5px; margin: 5px; padding: 5px">
+                <RadzenTextBox @bind-Value="newGrandParentIntitule"></RadzenTextBox>
+                <RadzenButton Text="Enregistrer" Click="@(async () => await AddGrandParent())"></RadzenButton>
+            </div>
+        }
+
+<RadzenGrid LogicalFilterOperator="LogicalFilterOperator.Or" ShowPagingSummary="true" SelectionMode="DataGridSelectionMode.Single" Data="@grandParents" AllowFiltering="true" AllowPaging="true" PageSize="5" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" RowClick="@((TFamille row) => SelectGrandParent(row))" class="rz-grid-table-striped rz-grid-filter-icon table-hover">
+    <Columns>
+        <RadzenGridColumn TItem="TFamille" Property="intitule"></RadzenGridColumn>
+        <RadzenGridColumn TItem="TFamille"> 
+             
+             <Template Context="grandParent">
+               
+                <div class="rz-grid-cell-clickable">
+                    <RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Size="ButtonSize.Small" Click="@(() => DeleteGrandParent(grandParent))" @onclick:stopPropagation="true"></RadzenButton> 
+                    <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Small" Click="@(() => EditFamille(grandParent))" @onclick:stopPropagation="true"></RadzenButton>                    
+                 </div>
+            </Template> 
+        </RadzenGridColumn>
+    </Columns>
+</RadzenGrid>
+
+
+
+
+</RadzenColumn>
+
+
+
+    <RadzenColumn Size="4" class="rz-color-on-info-lighter rz-text-align-center rz-p-2" Style="background-color: rgba(224, 221, 241, 0.3)">
+        @if (selectedGrandParent != null)
+        {
+            <div>
+                <RadzenButton Icon="add" Text="Sous Famille" Click="@(() => ToggleAddChildForm())" Style="margin-bottom: 20px"></RadzenButton>
+            </div>
+
+            @if (showAddChildForm)
+            {
+                <div style="margin: 5px; padding: 5px">
+                    <RadzenTextBox @bind-Value="newChildIntitule"></RadzenTextBox>
+                    <RadzenButton Text="Enregistrer" Click="@(async () => await AddChild())"></RadzenButton>
+                </div>
+            }
+        }
+
+        <RadzenGrid Data="@children" AllowFiltering="true" AllowPaging="true" PageSize="5" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" RowClick="@((TFamille row) => SelectChild(row))" class="rz-grid-table-striped rz-grid-filter-icon rz-data-grid-column rz-grid-table rz-data-grid" >
+            <Columns>
+                <RadzenGridColumn TItem="TFamille" Property="intitule" ></RadzenGridColumn>
+                <RadzenGridColumn TItem="TFamille">
+                    <Template Context="child">             
+                        <div class="rz-grid-cell-clickable">
+                            <RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Size="ButtonSize.Small" Click="@(() => DeleteChild(child))" @onclick:stopPropagation="true"></RadzenButton>
+                             <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Small" Click="@(() => EditFamille(child))" @onclick:stopPropagation="true"></RadzenButton>        
+                        </div>
+                    </Template>
+                </RadzenGridColumn>  
+            </Columns>
+        </RadzenGrid>
+    </RadzenColumn>
+
+    <RadzenColumn Size="4" class="rz-color-on-info-lighter rz-text-align-center rz-p-2" Style="background-color: rgba(224, 221, 241, 0.3)">
+        @if (selectedChild != null)
+        {
+            <div>
+                <RadzenButton Icon="add" Text="Sub Sous Famille" Click="@(() => ToggleAddSubChildForm())" Style="margin-bottom: 20px"></RadzenButton>
+            </div>
+
+            @if (showAddSubChildForm)
+            {
+                <div style="margin: 5px; padding: 5px">
+                    <RadzenTextBox  @bind-Value="newSubChildIntitule" ></RadzenTextBox>
+                    <RadzenButton Text="Save" Click="@(async () => await AddSubChild())"></RadzenButton>
+                </div>
+            }
+        } 
+
+        <RadzenGrid Data="@subChildren" AllowFiltering="true" AllowPaging="true" PageSize="5" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" class="rz-grid-table-striped rz-grid-filter-icon" >
+            <Columns>
+                <RadzenGridColumn TItem="TFamille" Property="intitule" > </RadzenGridColumn>
+                <RadzenGridColumn TItem="TFamille">
+                    <Template Context="subChild">
+                        <div class="rz-grid-cell-clickable">
+                            <RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Size="ButtonSize.Small" Click="@(() => DeleteSubChild(subChild))" @onclick:stopPropagation="true"></RadzenButton>
+                             <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Primary" Size="ButtonSize.Small" Click="@(() => EditFamille(subChild))" @onclick:stopPropagation="true"></RadzenButton> 
+                        </div>
+                    </Template>
+                </RadzenGridColumn>
+            </Columns>
+        </RadzenGrid> 
+    </RadzenColumn>
+</RadzenRow>
+
+
+
+
+

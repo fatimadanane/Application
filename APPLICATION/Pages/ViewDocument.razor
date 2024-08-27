@@ -1,0 +1,58 @@
+@page "/view-document"
+
+@attribute [Authorize]
+
+<div style="width: 100%; height: 100%; display: inline-block; justify-content: center; align-items: center; background-color: rgba(255, 255, 255, 0.94); border-radius: 20px">
+    <div style="width: 100%; max-width: 1000px; height: 100%">
+        <RadzenRow Style="text-align: center; font-weight: lighter; margin: 10px">
+            <RadzenColumn Size="4">
+                <div style="border-right: 1px solid #ccc; padding-right: 10px;">
+                    <RadzenText Style="font-weight: bold;">Date:</RadzenText>
+                    <RadzenText>@DocumentData?.date</RadzenText>
+                </div>
+            </RadzenColumn>
+            <RadzenColumn Size="4">
+                <div style="border-right: 1px solid #ccc; padding-right: 10px;">
+                    <RadzenText Style="font-weight: bold;">Famille Un:</RadzenText>
+                    <RadzenText>@DocumentData?.Famille_Un</RadzenText>
+                </div>
+            </RadzenColumn>
+            <RadzenColumn Size="4">
+                <div>
+                    <RadzenText Style="font-weight: bold;">Famille Deux:</RadzenText>
+                    <RadzenText>@DocumentData?.Famille_Deux</RadzenText>
+                </div>
+            </RadzenColumn>
+        </RadzenRow>
+        <RadzenRow Style="text-align: center; font-weight: lighter; margin: 10px">
+            <RadzenColumn Size="4">
+                <div style="border-right: 1px solid #ccc; padding-right: 10px;">
+                    <RadzenText Style="font-weight: bold;">Famille Trois:</RadzenText>
+                    <RadzenText>@DocumentData?.Famille_Trois</RadzenText>
+                </div>
+            </RadzenColumn>
+            <RadzenColumn Size="4">
+                <div style="border-right: 1px solid #ccc; padding-right: 10px;">
+                    <RadzenText Style="font-weight: bold;">Date Exp:</RadzenText>
+                    <RadzenText>@DocumentData?.Date_Exp</RadzenText>
+                </div>
+            </RadzenColumn>
+            <RadzenColumn Size="4">
+                <div>
+                    <RadzenText Style="font-weight: bold;">Date Alerte:</RadzenText>
+                    <RadzenText>@DocumentData?.Date_Alerte</RadzenText>
+                </div>
+            </RadzenColumn>
+        </RadzenRow>
+        <RadzenRow Style="text-align: center; font-weight: lighter; margin: 10px">
+            <RadzenColumn Size="6">
+                <div style="border-right: 1px solid #ccc; padding-right: 10px;">
+                    <RadzenText Style="font-weight: bold;">Intitulé:</RadzenText>
+                    <RadzenText>@DocumentData?.Intitule</RadzenText>
+                </div>
+            </RadzenColumn>
+            <RadzenColumn Size="6"></RadzenColumn>
+        </RadzenRow>
+    </div>
+</div>
+

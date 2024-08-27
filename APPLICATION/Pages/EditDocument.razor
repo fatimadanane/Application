@@ -1,0 +1,56 @@
+@page "/edit-document"
+@attribute [Authorize]
+
+<PageTitle>EditDocument</PageTitle>
+<RadzenRow Gap="1rem" AlignItems="Radzen.AlignItems.Center" Style="font-weight: bold;">
+    <RadzenColumn Size="12" SizeMD="6">
+        <RadzenStack>
+            <RadzenFieldset Style="font-weight: bold; width:100%;" Text="Informations de base">
+                <div style="margin-bottom: 1rem;">
+                    <RadzenLabel Text="Intitule" Component="Intitule" />
+                    <RadzenTextBox @bind-Value="editedDocument.Intitule" Style="width: 100%; font-size: 16px;" />
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <RadzenLabel Text="Famille Un" Component="FamilleUn" />
+                   <select @bind="selectedParentFamily">
+    @foreach (var parentFamily in parentFamilies)
+    {
+        <option value="@parentFamily">@parentFamily.intitule</option>
+    }
+</select>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <RadzenLabel Text="Famille Deux" Component="FamilleDeux" />
+                    <RadzenDropDown @bind-Value="editedDocument.Famille_Deux" Data="@parentFamilies" TextProperty="intitule" ValueProperty="intitule">
+                        <RadzenRequiredValidator Text="Famille Deux is required" Component="Famille_Deux" Style="position:absolute" Popup="true" />
+                    </RadzenDropDown>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <RadzenLabel Text="Famille Trois" Component="FamilleTrois" />
+                    <RadzenDropDown @bind-Value="editedDocument.Famille_Trois" Data="@parentFamilies" TextProperty="intitule" ValueProperty="intitule">
+                        <RadzenRequiredValidator Text="Famille Trois is required" Component="Famille_Trois" Style="position:absolute" Popup="true" />
+                    </RadzenDropDown>
+                </div>
+            </RadzenFieldset>
+        </RadzenStack>
+    </RadzenColumn>
+    <RadzenColumn Size="12" SizeMD="6">
+        <RadzenStack>
+            <RadzenFieldset Style="font-weight: bold;" Text="Informations de plus">
+                <div style="margin-bottom: 1rem;">
+                    <RadzenLabel Text="Date d'Expiration" Component="DateExp" />
+                    <RadzenDatePicker @bind-Value="editedDocument.Date_Exp" Style="width: 100%; font-size: 16px;" />
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <RadzenLabel Text="Date d'Alerte" Component="DateAlerte" />
+                    <RadzenDatePicker @bind-Value="editedDocument.Date_Alerte" Style="width: 100%; font-size: 16px;" />
+                </div>
+            </RadzenFieldset>
+        </RadzenStack>
+        <div style="text-align: right; padding: 30px 16px 16px 16px;">
+            <RadzenButton ButtonStyle="ButtonStyle.Primary" Text="Modifier" Click="@SubmitForm" />
+            <RadzenButton ButtonStyle="ButtonStyle.Secondary" Text="Annuler" Click="@(() => DialogService.Close())" Style="margin-left: 8px;" />
+        </div>
+    </RadzenColumn>
+</RadzenRow>
+

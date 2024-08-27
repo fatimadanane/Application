@@ -1,0 +1,45 @@
+@page "/societe"
+@using Radzen.Blazor;
+@attribute [Authorize]
+@using APPLICATION.Models.ARCHIVE
+@using Microsoft.EntityFrameworkCore
+
+<style> 
+
+</style>
+<PageTitle>Societe</PageTitle>
+<RadzenRow>
+    <RadzenColumn Size="12">
+        <RadzenText Icon="business" Text="Societés" TextStyle="TextStyle.H3" TextAlign="Radzen.TextAlign.Center" Style="font-family: Luminari; font-style: normal; color: #413cb4; font-weight: 900" />
+    </RadzenColumn>
+</RadzenRow>
+<RadzenDataGrid  GridLines="Radzen.DataGridGridLines.Vertical" AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="true" FilterMode="FilterMode.Simple" AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+    Data="@Societes" ColumnWidth="200px" LogicalFilterOperator="LogicalFilterOperator.Or" SelectionMode="DataGridSelectionMode.Single" TItem="TSociete" AllowColumnPicking="false" AllowColumnReorder="true" AllowGrouping="false" AllowVirtualization="false" IsLoading="false" Responsive="true" Style="border-radius: 10px; border: 2px solid #a89ee0; visibility: visible; color: rgba(66, 66, 66, 0.97); font-style: normal; text-align: center; background-color: #e1dcf6; float: none" CellClick="@DataGrid0CellClick" CellDoubleClick="@DataGrid0CellDoubleClick" class="rz-grid-table-striped">
+   <Columns>
+    <RadzenDataGridColumn TItem="TSociete" Property="id" Title="ID" />
+    <RadzenDataGridColumn TItem="TSociete" Property="intitule" Title="Intitule" />
+    <RadzenDataGridColumn TItem="TSociete" Property="adresse" Title="Adresse" />
+    <RadzenDataGridColumn TItem="TSociete" Property="telephone" Title="Telephone" />
+    <RadzenDataGridColumn TItem="TSociete" Property="fax" Title="Fax" />
+    <RadzenDataGridColumn TItem="TSociete" Property="email" Title="Email" />
+    <RadzenDataGridColumn TItem="TSociete" Property="site_web" Title="Site Web" />
+    <RadzenDataGridColumn TItem="TSociete" Property="rc" Title="RC" />
+    <RadzenDataGridColumn TItem="TSociete" Property="idf" Title="IDF" />
+    <RadzenDataGridColumn TItem="TSociete" Property="cnss" Title="CNSS" />
+    <RadzenDataGridColumn TItem="TSociete" Property="patente" Title="Patente" />
+    <RadzenDataGridColumn TItem="TSociete" Property="ice" Title="ICE" />
+    <RadzenDataGridColumn Width="160px" Frozen="true" Filterable="false" FrozenPosition="Radzen.FrozenColumnPosition.Right">
+        <Template Context="societe">
+           <RadzenButton ButtonStyle="ButtonStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" Icon="visibility" class="m-1" Click="@(async () => await OpenSociete(societe))" />
+
+              <RadzenButton ButtonStyle="ButtonStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" Icon="delete" class="m-1" Click="@(async () => await ConfirmAndDelete(societe))" />
+             <RadzenButton ButtonStyle="ButtonStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" Icon="edit" class="m-1" Click="@(() => EditSociete(societe))" />
+
+        </Template>
+    </RadzenDataGridColumn>
+</Columns>
+   <HeaderTemplate>
+<RadzenButton Icon="add_circle_outline" Text="Ajouter une societé" Variant="Radzen.Variant.Filled" Style="color: #1d00ff; text-transform: uppercase; background-color: rgba(87, 67, 210, 0.28); border-radius: 10px" Click="@(async ()=>await OpenAdd())"></RadzenButton>
+   </HeaderTemplate>
+</RadzenDataGrid>
+<RadzenTimeline></RadzenTimeline>

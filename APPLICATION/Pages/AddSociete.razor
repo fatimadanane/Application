@@ -1,0 +1,78 @@
+@page "/add-societe"
+@using APPLICATION.Models.ARCHIVE
+@attribute [Authorize]
+@using System.ComponentModel.DataAnnotations
+@using Radzen
+@using Microsoft.AspNetCore.Components.Forms
+@using Radzen.Blazor
+@using Radzen.Blazor.Rendering
+<PageTitle>AddSociete</PageTitle>
+
+
+
+<RadzenTemplateForm TItem="TSociete" Data=@addedSociete>
+    <RadzenFieldset Text="Informations de la societé" Style="font-weight: bold;">
+        <RadzenRow>
+            <RadzenColumn Size="6">
+                <RadzenStack Gap="1rem">
+                    <RadzenFormField AllowFloatingLabel="true" Text="Intitulé">
+                        <RadzenTextBox @bind-Value="addedSociete.intitule" />
+                        <RadzenRequiredValidator Text="Intitulé is required" Component="Intitule" Style="position:absolute" Popup="true" />
+                    </RadzenFormField>
+                    <RadzenFormField AllowFloatingLabel="true" Text="Adresse">
+                        <RadzenTextBox @bind-Value="addedSociete.adresse" />
+                        <RadzenRequiredValidator Text="Adresse is required" Component="Adresse" Style="position:absolute" Popup="true" />
+                    </RadzenFormField>
+                    <RadzenFormField AllowFloatingLabel="true" Text="Telephone">
+                        <RadzenTextBox @bind-Value="addedSociete.telephone" />
+                        <RadzenRequiredValidator Text="Telephone is required" Component="Telephone" Style="position:absolute" Popup="true" />
+                    </RadzenFormField>
+                    <RadzenFormField AllowFloatingLabel="true" Text="Fax">
+                        <RadzenTextBox @bind-Value="addedSociete.fax" />
+                        <RadzenRequiredValidator Text="Fax is required" Component="Fax" Style="position:absolute" Popup="true" />
+                    </RadzenFormField>
+                    <RadzenFormField AllowFloatingLabel="true" Text="Email">
+                        <RadzenTextBox @bind-Value="addedSociete.email" />
+                        <RadzenRequiredValidator Text="Email is required" Component="Email" Style="position:absolute" Popup="true" />
+                      
+                    </RadzenFormField>
+                    <RadzenFormField AllowFloatingLabel="true" Text="Site Web">
+                        <RadzenTextBox @bind-Value="addedSociete.site_web" />
+                        <RadzenRequiredValidator Text="Site Web is required" Component="SiteWeb" Style="position:absolute" Popup="true" />           
+                    </RadzenFormField>
+                </RadzenStack>
+            </RadzenColumn>
+            <RadzenColumn Size="6">
+                <RadzenStack>
+                    <RadzenFormField AllowFloatingLabel="true" Text="RC">
+                        <RadzenTextBox @bind-Value="addedSociete.rc" />
+                        <RadzenRequiredValidator Text="RC is required" Component="RC" Style="position:absolute" Popup="true" />
+                    </RadzenFormField>
+                    <RadzenFormField AllowFloatingLabel="true" Text="IF">
+                        <RadzenTextBox @bind-Value="addedSociete.idf" />
+                        <RadzenRequiredValidator Text="IF is required" Component="IF" Style="position:absolute" Popup="true" />
+                    </RadzenFormField>
+                    <RadzenFormField AllowFloatingLabel="true" Text="CNSS">
+                        <RadzenTextBox @bind-Value="addedSociete.cnss" />
+                        <RadzenRequiredValidator Text="CNSS is required" Component="CNSS" Style="position:absolute" Popup="true" />
+                    </RadzenFormField>
+                    <RadzenFormField AllowFloatingLabel="true" Text="Patente">
+                        <RadzenTextBox @bind-Value="addedSociete.patente" />
+                        <RadzenRequiredValidator Text="Patente is required" Component="Patente" Style="position:absolute" Popup="true" />
+                    </RadzenFormField>
+                    <RadzenFormField AllowFloatingLabel="true" Text="ICE">
+                        <RadzenTextBox @bind-Value="addedSociete.ice" />
+                        <RadzenRequiredValidator Text="ICE is required" Component="ICE" Style="position:absolute" Popup="true" />
+                    </RadzenFormField>
+                   
+
+                           
+                             <div style="text-align: right; padding: 40px 16px 16px 16px;">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" Text="Valider" Click="@SubmitForm" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Secondary" Text="Annuler" Click="@(() => DialogService.Close())" Style="margin-left: 8px;" />
+                           </div>
+                </RadzenStack>                             
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenFieldset>              
+</RadzenTemplateForm>

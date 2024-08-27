@@ -1,0 +1,89 @@
+@page "/view-societe"
+
+@attribute [Authorize]
+
+
+<div style="width: 100%; height: 100%; display: inline-block; justify-content: center; align-items: center; background-color: rgba(255, 255, 255, 0.94); border-radius: 20px">
+    <div style="width: 100%; max-width: 1000px; height: 100%">
+        <RadzenRow Style="text-align: center; font-weight: lighter; margin: 10px">
+            <RadzenColumn Size="3">
+                <div style="border-right: 1px solid #ccc; padding-right: 10px;">
+                    <RadzenText Style="font-weight: bold;">Intitulé:</RadzenText>
+                    <RadzenText>@Societe?.intitule</RadzenText>
+                </div>
+            </RadzenColumn>
+            <RadzenColumn Size="6">
+                <div style="border-right: 1px solid #ccc; padding-right: 10px;">
+                    <RadzenText Style="font-weight: bold;">Adresse:</RadzenText>
+                    <RadzenText>@Societe?.adresse</RadzenText>
+                </div>
+            </RadzenColumn>
+            <RadzenColumn Size="3">
+                
+                    <RadzenText Style="font-weight: bold;">Téléphone:</RadzenText>
+                    <RadzenText>@Societe?.telephone</RadzenText>
+              
+            </RadzenColumn>
+        
+        </RadzenRow>
+        <RadzenRow Style="text-align: center; font-weight: lighter; margin: 10px">
+            <RadzenColumn Size="4">
+                <div style="border-right: 1px solid #ccc; padding-right: 10px;">
+                    <RadzenText Style="font-weight: bold;">Email:</RadzenText>
+                    <RadzenText>@Societe?.email</RadzenText>
+                </div>
+            </RadzenColumn>
+            <RadzenColumn Size="4">
+                <div style="border-right: 1px solid #ccc; padding-right: 10px;">
+                    <RadzenText Style="font-weight: bold;">Site Web:</RadzenText>
+                    <RadzenText>@Societe?.site_web</RadzenText>
+                </div>
+            </RadzenColumn>
+            <RadzenColumn Size="4">
+               
+                    <RadzenText Style="font-weight: bold;">Fax:</RadzenText>
+                    <RadzenText>@Societe?.fax</RadzenText>
+              
+            </RadzenColumn>
+        
+      
+        </RadzenRow>
+         <RadzenRow Style="text-align: center; font-weight: lighter; margin: 10px">  
+           <RadzenColumn Size="4">
+                <div style="border-right: 1px solid #ccc; padding-right: 10px;">
+                    <RadzenText Style="font-weight: bold;">CNSS:</RadzenText>
+                    <RadzenText>@Societe?.cnss</RadzenText>
+                </div>
+            </RadzenColumn>
+          
+          
+            <RadzenColumn Size="4">
+             <div style="border-right: 1px solid #ccc; padding-right: 10px;">
+                    <RadzenText Style="font-weight: bold;">Patente:</RadzenText>
+                    <RadzenText>@Societe?.patente</RadzenText>
+                </div>
+            </RadzenColumn>          
+                 <RadzenColumn Size="4">
+                    <RadzenText Style="font-weight: bold;">RC:</RadzenText>
+                    <RadzenText>@Societe?.rc</RadzenText>
+               
+            </RadzenColumn>
+        </RadzenRow>
+        <RadzenRow Style="text-align: center; font-weight: lighter; margin: 10px">
+
+            <RadzenColumn Size="6">
+                <div style="border-right: 1px solid #ccc; padding-right: 10px;">
+                    <RadzenText Style="font-weight: bold;">IDF:</RadzenText>
+                    <RadzenText>@Societe?.idf</RadzenText>
+                </div>
+            </RadzenColumn>
+            <RadzenColumn Size="6">
+                <div>
+                    <RadzenText Style="font-weight: bold;">ICE:</RadzenText>
+                    <RadzenText>@Societe?.ice</RadzenText>
+                </div>
+          </RadzenColumn>
+        </RadzenRow>
+    </div>
+</div>
+
